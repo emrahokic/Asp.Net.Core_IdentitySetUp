@@ -17,6 +17,8 @@ namespace WebApplication8.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
+
         public IActionResult Create(int GradId, string DrzavaNaziv, string AdresaNaziv)
         {
             if (DrzavaNaziv != null && AdresaNaziv != null)
