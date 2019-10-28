@@ -2,27 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebApplication8.ViewModels;
 
 namespace WebApplication8.Controllers
 {
+    [Authorize]
     public class FormaController : Controller
     {
         public IActionResult Index()
         {
             return View();
         }
-        
-        public IActionResult Create(FormaVM model)
+
+        public IActionResult Create(int GradId, string DrzavaNaziv, string AdresaNaziv)
         {
-            if (ModelState.IsValid)
+            if (DrzavaNaziv != null && AdresaNaziv != null)
             {
-                if (model.Drzava != null && model.Adresa != null )
+                FormaVM model1 = new FormaVM()
                 {
-                    return RedirectToAction(nameof(Details), model);
-                }
+                    Adresa = AdresaNaziv,
+                    Drzava = DrzavaNaziv,
+                    GradId = GradId
+                };
+                DrzavaNaziv = null;
+                AdresaNaziv = null;
+                GradId = -1;
+                return View(nameof(Details), model1);
             }
             List<string> s = new List<string>();
 
@@ -38,7 +46,7 @@ namespace WebApplication8.Controllers
                 Value = new Random().Next().ToString(),
                 Text = x
             })); ;
-
+            FormaVM model = new FormaVM();
             model.ListaGradova = listagradova;
             return View(model);
         }
