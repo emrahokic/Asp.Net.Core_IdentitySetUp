@@ -21,6 +21,7 @@ namespace WebApplication8.Areas.Identity
                         context.Configuration.GetConnectionString("MojIdentityContextConnection")));
 
                 services.AddDefaultIdentity<MojIdentityUser>()
+                .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<MojIdentityContext>();
             });
         }
