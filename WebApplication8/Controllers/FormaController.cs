@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using WebApplication8.Models;
 using WebApplication8.ViewModels;
 
 namespace WebApplication8.Controllers
@@ -12,6 +13,12 @@ namespace WebApplication8.Controllers
     [Authorize]
     public class FormaController : Controller
     {
+        private readonly MojIdentityContext _ctx;
+
+        public FormaController(MojIdentityContext context)
+        {
+            _ctx = context;
+        }
         public IActionResult Index()
         {
             return View();
@@ -19,13 +26,15 @@ namespace WebApplication8.Controllers
 
         [Authorize(Roles = "Admin")]
 
-        public IActionResult Create(int GradId, string DrzavaNaziv, string AdresaNaziv)
+        public IActionResult Create(int GradId, string DrzavaNaziv, string AdresaNaziv, string NekiName)
         {
+
+
             if (DrzavaNaziv != null && AdresaNaziv != null)
             {
                 FormaVM model1 = new FormaVM()
                 {
-                    Adresa = AdresaNaziv,
+                    Adresa = AdresaNaziv + " " +NekiName,
                     Drzava = DrzavaNaziv,
                     GradId = GradId
                 };
@@ -52,7 +61,10 @@ namespace WebApplication8.Controllers
             model.ListaGradova = listagradova;
             return View(model);
         }
-
+        public IActionResult GetPartialView()
+        {
+            return PartialView("FormaPartialView");
+        }
         public IActionResult Details(FormaVM model)
         {
             return View(model);

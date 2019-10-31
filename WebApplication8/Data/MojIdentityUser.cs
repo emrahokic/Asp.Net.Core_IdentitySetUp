@@ -12,6 +12,7 @@ namespace WebApplication8.Areas.Identity.Data
         public string  FirstName { get; set; }
 
         public string  LastName { get; set; }
+        public byte[] Slika { get; set; }
         public char  Gander { get; set; }
     }
 }
