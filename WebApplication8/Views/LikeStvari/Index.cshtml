@@ -1,0 +1,26 @@
+﻿@model LikeStvariPrikazVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>LikeStvari</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Naziv</th>
+            <th scope="col">Pet</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var stvar in Model.LikeStvari)
+        {
+            <tr>
+                <td scope="row">@stvar.Naziv</td>
+                <td>@stvar.NazivPeta</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

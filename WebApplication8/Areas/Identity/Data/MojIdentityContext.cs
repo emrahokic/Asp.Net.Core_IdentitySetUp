@@ -9,12 +9,14 @@ using WebApplication8.Areas.Identity.Data;
 
 namespace WebApplication8.Models
 {
-    public class MojIdentityContext : IdentityDbContext<MojIdentityUser>
+    public class MojIdentityContext : IdentityDbContext<MojIdentityUser,IdentityRole<int>,int>
     {
         public MojIdentityContext(DbContextOptions<MojIdentityContext> options)
             : base(options)
         {
         }
+        public DbSet<Pet> Pet { get; set; }
+        public DbSet<LikeStvari> LikeStvari { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

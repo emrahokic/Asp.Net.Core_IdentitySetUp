@@ -1,0 +1,12 @@
+﻿@model LikeStvariVM
+@{
+    ViewData["Title"] = "Dodaj";
+}
+
+<form asp-controller="LikeStvari" asp-action="Dodaj">
+    <div class="form-group">
+        <label>Naziv LikeStvari</label>
+        <input class="form-group" asp-for="Naziv">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,91 @@
+﻿@model PetVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+
+    body{
+        background-color: #f1f1f1 !important;
+    }
+</style>
+<h1 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Pets</h1>
+
+@*<table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Naziv</th>
+                <th scope="col">Ukupno voljenih stvari</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pet in Model.Pets)
+            {
+            <tr>
+                <td scope="row">
+                        <img src="~/shiba.png" alt="Nema para nema stida" />
+                </td>
+                <td scope="row">@pet.Naziv</td>
+                <td>@pet.BrojLikeStvari</td>
+                <td><a class="btn btn-primary" asp-controller="LikeStvari" asp-action="Dodaj" asp-route-id="@pet.PetID"> Dodaj </a></td>
+                <td><a class="btn btn-primary" asp-controller="LikeStvari" asp-action="Index" asp-route-id="@pet.PetID"> Prikaz </a></td>
+            </tr>
+            }
+        </tbody>
+    </table>*@
+
+<section>
+    <div class="container">
+
+        @foreach (var pet in Model.Pets)
+        {
+
+            <div class="row card" style="margin:10px; padding:15px"  >
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4 " style="margin:10px;padding:10px; cursor:pointer">
+                            @if (pet.Vrsta == "Pas")
+                            {
+                                <img src="~/shiba.png" alt="Trea biti pas a ne nista" width="100%" />
+                            }
+                            @if (pet.Vrsta == "Macka")
+                            {
+                                <img src="~/cat.png" alt="Trea biti macka a ne nista" width="100%"/>
+                            }
+                            @if (pet.Vrsta == "Konj")
+                            {
+                                <img src="~/horse.png" alt="Trea biti konj a ne nista" width="100%" />
+                            }
+                            @if (pet.Vrsta == "Kobila")
+                            {
+                                <img src="~/horseFemale.png" alt="Trea biti kobila a ne nista" width="100%" />
+                            }
+                            @if (pet.Vrsta == "Kornjaca")
+                            {
+                                <img src="~/turtle.png" alt="Trea biti kornjaca a ne nista" width="100%" />
+                            }
+                        </div>
+                        <div class="col-md-7 text-center font-weight-bold">
+                            <h2 style="text-align:center;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"> Ime ljubimca - @pet.Naziv </h2>
+                            <br />
+                            <h2 style="text-align:center;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"> Ukupno omiljenih stvari - @pet.BrojLikeStvari </h2>
+                            <br />
+                            
+                            <a class="btn btn-dark" asp-controller="LikeStvari" asp-action="Dodaj" asp-route-id="@pet.PetID"> Dodaj omiljene stvari </a>
+                            <br /  >
+                            <br /  >
+
+                            <a class="btn btn-dark" asp-controller="LikeStvari" asp-action="Index" asp-route-id="@pet.PetID"> Prikaz omiljene stvari </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        }
+
+    </div>
+</section>
+
+
+<a class="btn btn-dark" asp-controller="Pet" asp-action="Dodaj"> Dodaj ljubimca </a>
