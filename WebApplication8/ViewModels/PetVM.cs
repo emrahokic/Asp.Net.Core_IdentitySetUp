@@ -14,6 +14,7 @@ namespace WebApplication8.ViewModels
         {
             Pets = new List<RoW>();
         }
+
         public class RoW
         {
             public int PetID { get; set; }

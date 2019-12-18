@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model PetVM.RoW
+
+
+<div class="row card" style="margin:10px; padding:15px">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-4 " style="margin:10px;padding:10px; cursor:pointer">
+                @if (Model.Vrsta == "Pas")
+                {
+                    <img src="~/shiba.png" alt="Trea biti pas a ne nista" width="100%" />
+                }
+                @if (Model.Vrsta == "Macka")
+                {
+                    <img src="~/cat.png" alt="Trea biti macka a ne nista" width="100%" />
+                }
+                @if (Model.Vrsta == "Konj")
+                {
+                    <img src="~/horse.png" alt="Trea biti konj a ne nista" width="100%" />
+                }
+                @if (Model.Vrsta == "Kobila")
+                {
+                    <img src="~/horseFemale.png" alt="Trea biti kobila a ne nista" width="100%" />
+                }
+                @if (Model.Vrsta == "Kornjaca")
+                {
+                    <img src="~/turtle.png" alt="Trea biti kornjaca a ne nista" width="100%" />
+                }
+            </div>
+            <div class="col-md-7 text-center font-weight-bold">
+                <h2 style="text-align:center;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"> Ime ljubimca - @Model.Naziv </h2>
+                <br />
+                <h2 style="text-align:center;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"> Ukupno omiljenih stvari - @Model.BrojLikeStvari </h2>
+                <br />
+
+                <a class="btn btn-dark" asp-controller="LikeStvari" asp-action="Dodaj" asp-route-id="@Model.PetID"> Dodaj omiljene stvari </a>
+                <br />
+                <br />
+
+                <a class="btn btn-dark" asp-controller="LikeStvari" asp-action="Index" asp-route-id="@Model.PetID"> Prikaz omiljene stvari </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+

@@ -22,6 +22,7 @@ namespace WebApplication8.ViewModels
             }).ToList();
 
         }
+
         public string Naziv { get; set; }
         public DateTime DatumRodjenja { get; set; }
         public int vrsta { get; set; }
